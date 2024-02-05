@@ -1,0 +1,2 @@
+builder.exe ..\x64\Release\hitbox.dll .\
+pause

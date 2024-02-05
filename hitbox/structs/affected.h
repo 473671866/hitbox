@@ -1,29 +1,32 @@
 #pragma once
 
-enum class  Affected_Types :int
+enum class affected_types :int
 {
-	NormalHitBox = 0x1,						//0x01；受击框
-	CastBox = 0x2,							//0x02；被投框
-	GuardBox = 0x3,							//0x03；防御框
-	DownHitBox = 0x4,						//0x04；倒地受击框
-	OffsetFlyingObjectBox = 0x5,			//0x05；抵消飞行道具框
-	ReboundFlyingObjectBox = 0x6,			//0x06；反弹飞行道具框
-	TyrantsBox = 0x7,						//0x07；霸体框
-	GuardPointBox = 0x8,					//0x08；当身框
+	normal = 0x1,							//受击框
+	capture = 0x2,							//被投框
+	guard = 0x3,							//防御框
+	ground = 0x4,							//地面受击框
+	negative = 0x5,							//抵消飞行道具框
+	reflects = 0x6,							//反弹飞行道具框
+	invulnerability = 0x7,					//霸体框
+	parries = 0x8,							//当身框
+	nothing = 0x9,							//飞行道具当身框
+	parriesex = 0xA,						//投技当身框
+	none = 0x9999
 };
 
-struct Affected_Boxs						//受击框结构；每帧占用0x2C字节
+struct affected_boxs						//受击框结构；每帧占用0x2C字节
 {
-	unsigned int frame;						//偏移0x00；帧数
-	unsigned int fill1;						//偏移0x04
-	Affected_Types types;					//偏移0x08；受击框类型
-	unsigned int flag;						//偏移0x0C；Flag在不同类型的受击框中对应的功能不一样
-	unsigned int fill2;						//偏移0x10
-	unsigned int fill3;						//偏移0x14
-	unsigned int fill4;						//偏移0x18
-	float x;								//偏移0x1C
-	float y;								//偏移0x20
-	float w;								//偏移0x24
-	float h;								//偏移0x28
+	unsigned int frame;						//0x00；帧数
+	unsigned int _0x04;						//0x04
+	affected_types types;					//0x08；受击框类型
+	unsigned int flag;						//0x0C；Flag在不同类型的受击框中对应的功能不一样
+	unsigned int _0x10;						//0x10
+	unsigned int path;						//0x14
+	unsigned int _0x18;						//0x18
+	float x;								//0x1C
+	float y;								//0x20
+	float w;								//0x24
+	float h;								//0x28
 };
-static_assert(sizeof(Affected_Boxs) == 0x2C, "Size check");
+static_assert(sizeof(affected_boxs) == 0x2C, "Size check");

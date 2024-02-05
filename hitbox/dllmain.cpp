@@ -1,6 +1,6 @@
 ﻿#include <windows.h>
 #include <thread>
-#include "entry.h"
+#include "entity/entry.h"
 
 BOOL APIENTRY DllMain(HMODULE hModule,
 	DWORD  ul_reason_for_call,

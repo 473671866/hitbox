@@ -1,17 +1,21 @@
 #pragma once
 
-struct Body_Boxs						//身位框结构；每帧占用0x2C字节
-{
-	unsigned int frame;					//偏移0x00；帧数
-	unsigned int fill1;					//偏移0x04
-	unsigned int fill2;					//偏移0x08
-	unsigned int fill3;					//偏移0x0C
-	unsigned int fill4;					//偏移0x10
-	unsigned int fill5;					//偏移0x14
-	unsigned int fill6;					//偏移0x18
-	float x;							//偏移0x1C
-	float y;							//偏移0x20
-	float w;							//偏移0x24
-	float h;							//偏移0x28
+enum class body_types {
+	none = 0x9999
 };
-static_assert(sizeof(Body_Boxs) == 0x2C, "Size check");
+
+struct body_boxs						//身位框结构；每帧占用0x2C字节
+{
+	unsigned int frame;					//0x00；帧数
+	unsigned int _0x04;					//0x04
+	unsigned int _0x08;					//0x08
+	unsigned int _0x0C;					//0x0C
+	unsigned int _0x10;					//0x10
+	unsigned int _0x14;					//0x14
+	unsigned int _0x18;					//0x18
+	float x;							//0x1C
+	float y;							//0x20
+	float w;							//0x24
+	float h;							//0x28
+};
+static_assert(sizeof(body_boxs) == 0x2C, "Size check");

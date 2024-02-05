@@ -1,33 +1,35 @@
 #pragma once
 #include "action.h"
 
-struct Flight_Props
+struct projectile
 {
-	char unknown1[0x38];		//0x0
-	Actions* acts;				//0x38
-	char unknown2[0x60];		//0x40
+	char _0x0[0x38];			//0x0
+	actions* acts;				//0x38
+	char _0x40[0x28];			//0x40
+	attacks* atcs;				//0x68
+	char _0x68[0x30];			//0x70
 	float x;					//0xa0
 	float y;					//0xa4
 	char unknown3[0xac];		//0xa8
 	int toward;					//0x154：面向
-	int unknown4;				//0x158
-	int unknown5;				//0x15c
-	int unknown6;				//0x160
-	int unknown7;				//0x164
+	int _0x158;					//0x158
+	int _0x15c;					//0x15c
+	int _0x160;					//0x160
+	int _0x164;					//0x164
 	int number;					//0x168
-	int unknown8;				//0x16c
+	int _0x16c;					//0x16c
 	int now;					//0x170: 正在执行帧数
 };
 
-struct Flight_Props_List
+struct projectile_list
 {
-	Flight_Props_List* next;	//0x0
+	projectile_list* next;	//0x0
 	void* hold;					//0x8
-	Flight_Props* props;		//0x10
+	projectile* props;		//0x10
 };
 
-struct Flight_Props_Header
+struct projectile_header
 {
 	char hold[0x30];
-	Flight_Props_List* list;		//0x30
+	projectile_list* list;	//0x30
 };

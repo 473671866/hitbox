@@ -22,21 +22,21 @@
     <Filter Include="structs">
       <UniqueIdentifier>{1b98fa8c-85cc-49fa-a361-05f5a0fa90e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{e9486e4e-10e7-401e-ba20-6693f844a6bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="entity">
+      <UniqueIdentifier>{90b05937-f7e2-4ac8-91a8-ecd05032c2aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="draw">
+      <UniqueIdentifier>{a5a2c08f-653a-4dd0-84ca-93b8f2d46f03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="box">
+      <UniqueIdentifier>{0c364e5a-b406-4912-821a-56696ddc010a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="searcher.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="entry.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="mappers.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="services.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="imgui\imgui.cpp">
@@ -57,41 +57,38 @@
     <ClCompile Include="imgui\imgui_widgets.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
-    <ClCompile Include="graphics.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="utils\graphics.cpp">
+      <Filter>utils</Filter>
     </ClCompile>
-    <ClCompile Include="draws.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="utils\memory.cpp">
+      <Filter>utils</Filter>
     </ClCompile>
-    <ClCompile Include="control.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="utils\searcher.cpp">
+      <Filter>utils</Filter>
     </ClCompile>
-    <ClCompile Include="memory.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="entity\entry.cpp">
+      <Filter>entity</Filter>
+    </ClCompile>
+    <ClCompile Include="draw\control.cpp">
+      <Filter>draw</Filter>
+    </ClCompile>
+    <ClCompile Include="draw\draws.cpp">
+      <Filter>draw</Filter>
+    </ClCompile>
+    <ClCompile Include="box\boxs.cpp">
+      <Filter>box</Filter>
+    </ClCompile>
+    <ClCompile Include="box\context.cpp">
+      <Filter>box</Filter>
+    </ClCompile>
+    <ClCompile Include="box\mappers.cpp">
+      <Filter>box</Filter>
+    </ClCompile>
+    <ClCompile Include="box\services.cpp">
+      <Filter>box</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="searcher.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="singleton.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="scope_exit.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="entry.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="signatures.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="mappers.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="services.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="imgui\imconfig.h">
       <Filter>imgui</Filter>
     </ClInclude>
@@ -152,9 +149,6 @@
     <ClInclude Include="unreal_engine\World.h">
       <Filter>unreal_engine</Filter>
     </ClInclude>
-    <ClInclude Include="structs\player.h">
-      <Filter>structs</Filter>
-    </ClInclude>
     <ClInclude Include="structs\action.h">
       <Filter>structs</Filter>
     </ClInclude>
@@ -167,25 +161,58 @@
     <ClInclude Include="structs\body.h">
       <Filter>structs</Filter>
     </ClInclude>
-    <ClInclude Include="graphics.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="draws.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="control.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="imgui\alifont.hpp">
       <Filter>imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="memory.h">
-      <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="structs\props.h">
       <Filter>structs</Filter>
     </ClInclude>
     <ClInclude Include="structs\objects.h">
+      <Filter>structs</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\graphics.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\memory.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\scope_exit.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\searcher.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="entity\entry.h">
+      <Filter>entity</Filter>
+    </ClInclude>
+    <ClInclude Include="draw\control.h">
+      <Filter>draw</Filter>
+    </ClInclude>
+    <ClInclude Include="draw\draws.h">
+      <Filter>draw</Filter>
+    </ClInclude>
+    <ClInclude Include="box\services.h">
+      <Filter>box</Filter>
+    </ClInclude>
+    <ClInclude Include="box\signatures.hpp">
+      <Filter>box</Filter>
+    </ClInclude>
+    <ClInclude Include="box\boxs.h">
+      <Filter>box</Filter>
+    </ClInclude>
+    <ClInclude Include="box\context.h">
+      <Filter>box</Filter>
+    </ClInclude>
+    <ClInclude Include="box\mappers.h">
+      <Filter>box</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\logger.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\singleton.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="structs\object.h">
       <Filter>structs</Filter>
     </ClInclude>
   </ItemGroup>

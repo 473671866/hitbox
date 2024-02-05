@@ -15,18 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="loader.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="MemLoadDll.h">
+    <ClInclude Include="loader.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="loader.h">
+    <ClInclude Include="MemLoadDll.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="scope_exit.hpp">
@@ -38,5 +30,13 @@
     <ClInclude Include="hitbox.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="loader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -88,7 +88,7 @@
       <Filter>box</Filter>
     </ClCompile>
     <ClCompile Include="box\switched.cpp">
-      <Filter>源文件</Filter>
+      <Filter>box</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -219,7 +219,7 @@
       <Filter>structs</Filter>
     </ClInclude>
     <ClInclude Include="box\switched.h">
-      <Filter>头文件</Filter>
+      <Filter>box</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

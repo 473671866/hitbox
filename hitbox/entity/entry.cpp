@@ -104,8 +104,6 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 }
 
 void entry(HMODULE hmodule) {
-	loggers::initialize();
-
 	mappers* mapper = mappers::instance();
 	if (mapper->initliaze() == false) {
 		MessageBoxA(nullptr, "mappers initialize failed", "warning", MB_OK);

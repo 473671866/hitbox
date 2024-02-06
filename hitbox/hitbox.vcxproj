@@ -153,6 +153,7 @@
     <ClCompile Include="box\context.cpp" />
     <ClCompile Include="box\mappers.cpp" />
     <ClCompile Include="box\services.cpp" />
+    <ClCompile Include="box\switched.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="draw\control.cpp" />
     <ClCompile Include="draw\draws.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="box\mappers.h" />
     <ClInclude Include="box\services.h" />
     <ClInclude Include="box\signatures.hpp" />
+    <ClInclude Include="box\switched.h" />
     <ClInclude Include="draw\control.h" />
     <ClInclude Include="draw\draws.h" />
     <ClInclude Include="entity\entry.h" />

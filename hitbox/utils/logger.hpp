@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <windows.h>
 
 #ifdef _DEBUG
 #define logger(message, ...) loggers::information(__FUNCTION__, __LINE__, message, __VA_ARGS__)
@@ -15,6 +16,7 @@ public:
 		freopen("CONOUT$", "w+t", stdout);
 		freopen("CONIN$", "r+t", stdin);
 #endif
+		return;
 	}
 
 	// 支持格式化字符串的日志记录函数

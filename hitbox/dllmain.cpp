@@ -32,12 +32,14 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 {
 	switch (ul_reason_for_call)
 	{
-	case DLL_PROCESS_ATTACH:
+	case DLL_PROCESS_ATTACH: {
 		auto header = reinterpret_cast<unsigned long long>(hModule);
 		auto dos_header = reinterpret_cast<IMAGE_DOS_HEADER*>(header);
 		auto nt_header = reinterpret_cast<IMAGE_NT_HEADERS*>(header + dos_header->e_lfanew);
 		RtlInstallFunctionTableCallback(header | 3, header, nt_header->OptionalHeader.SizeOfImage, rebuild_exception, hModule, NULL);
 		std::thread(entry, hModule).detach();
+		break;
+	}
 	case DLL_THREAD_ATTACH:
 	case DLL_THREAD_DETACH:
 	case DLL_PROCESS_DETACH:

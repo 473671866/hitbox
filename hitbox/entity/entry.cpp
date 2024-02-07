@@ -132,5 +132,10 @@ void entry(HMODULE hmodule) {
 	graphic->hook(initialize, &present, options::present);
 	graphic->hook(change, &resize, options::resize);
 	g_lpOriginalWndproc = (WNDPROC)SetWindowLongPtr(g_hUnrealWindow, GWLP_WNDPROC, (LONG_PTR)WndProc);
+	if (g_lpOriginalWndproc == nullptr) {
+		MessageBoxA(nullptr, "wndproc initialize failed", "warning", MB_OK);
+		return;
+	}
+
 	return;
 }

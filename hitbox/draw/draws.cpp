@@ -66,7 +66,6 @@ bool draws::draw()
 		return false;
 	}
 
-	rect r{};
 	for (switched& swch : switches) {
 		if (!swch.display)
 			continue;

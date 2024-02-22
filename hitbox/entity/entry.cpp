@@ -129,8 +129,6 @@ void entry(HMODULE hmodule) {
 		return;
 	}
 
-	graphic->hook(initialize, &present, options::present);
-	graphic->hook(change, &resize, options::resize);
 	g_lpOriginalWndproc = (WNDPROC)SetWindowLongPtr(g_hUnrealWindow, GWLP_WNDPROC, (LONG_PTR)WndProc);
 	if (g_lpOriginalWndproc == nullptr) {
 		int error = GetLastError();
@@ -139,5 +137,8 @@ void entry(HMODULE hmodule) {
 		MessageBoxA(nullptr, buffer, "warning", MB_OK);
 		return;
 	}
+
+	graphic->hook(initialize, &present, options::present);
+	graphic->hook(change, &resize, options::resize);
 	return;
 }

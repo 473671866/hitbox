@@ -4,6 +4,7 @@
 
 #include "control.h"
 #include "../box/context.h"
+#include "../utils/macro.hpp"
 #include "../utils/singleton.hpp"
 
 class draws : public singleton<draws>

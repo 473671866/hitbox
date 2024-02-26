@@ -34,37 +34,22 @@ bool draws::draw()
 {
 	auto objects = *mapper->objs;
 
-	if (objects == nullptr) {
+	if (objects == nullptr)
 		return false;
-	}
-	if (objects->complete != 2) {
+
+	if (objects->complete != 2)
 		return false;
-	}
-	if (objects->ready <= 2) {
+
+	if (objects->ready <= 2)
 		return false;
-	}
 
 	auto p1 = objects->p1;
-	if (p1 == nullptr) {
+	if (p1 == nullptr)
 		return false;
-	}
-	if (p1->acts == nullptr) {
-		return false;
-	}
-	if (p1->acts->entry == nullptr) {
-		return false;
-	}
 
 	auto p2 = objects->p2;
-	if (p2 == nullptr) {
+	if (p2 == nullptr)
 		return false;
-	}
-	if (p2->acts == nullptr) {
-		return false;
-	}
-	if (p2->acts->entry == nullptr) {
-		return false;
-	}
 
 	for (switched& swch : switches) {
 		if (!swch.display)

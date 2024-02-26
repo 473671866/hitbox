@@ -221,5 +221,8 @@
     <ClInclude Include="box\switched.h">
       <Filter>box</Filter>
     </ClInclude>
+    <ClInclude Include="utils\macro.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

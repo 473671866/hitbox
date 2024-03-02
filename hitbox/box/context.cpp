@@ -1,6 +1,6 @@
 #include "context.h"
 
-using namespace hitboxs;
+using namespace hitboxes;
 context contexts[] = {
 	{action_types::body,new body},
 	{action_types::affected,new affected},

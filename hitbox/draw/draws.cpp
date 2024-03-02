@@ -19,8 +19,8 @@ void draws::menus()
 	ImGui::SetNextItemWidth(50);
 	ImGui::InputFloat(u8"Í¸Ã÷¶È", &alpha, 0.0f, 0.0f, "%.2f");
 
-	for (int i = 0; i < (sizeof(switches) / sizeof(switched)); i++) {
-		switched* swch = &switches[i];
+	for (int i = 0; i < (sizeof(switches) / sizeof(switcher)); i++) {
+		switcher* swch = &switches[i];
 		control::label(swch->name, &swch->display, swch->title, &swch->control, &swch->color);
 	}
 
@@ -51,7 +51,7 @@ bool draws::draw()
 	if (p2 == nullptr)
 		return false;
 
-	for (switched& swch : switches) {
+	for (switcher& swch : switches) {
 		if (!swch.display)
 			continue;
 
@@ -66,14 +66,14 @@ bool draws::draw()
 				continue;
 
 			if (dp1) {
-				hitboxs::boxs* b = contexts[index].instance;
+				hitboxes::boxs* b = contexts[index].instance;
 				b->alpha = alpha;
 				b->service = serivce;
 				b->box(p1, actcs, swch);
 			}
 
 			if (dp2) {
-				hitboxs::boxs* b = contexts[index].instance;
+				hitboxes::boxs* b = contexts[index].instance;
 				b->alpha = alpha;
 				b->service = serivce;
 				b->box(p2, actcs, swch);
@@ -81,7 +81,7 @@ bool draws::draw()
 		}
 	}
 
-	for (switched& swch : switches) {
+	for (switcher& swch : switches) {
 		if (swch.types != attack_types::projectile)
 			continue;
 
@@ -102,14 +102,14 @@ bool draws::draw()
 					continue;
 
 				if (dp1) {
-					hitboxs::boxs* b = contexts[index].instance;
+					hitboxes::boxs* b = contexts[index].instance;
 					b->alpha = alpha;
 					b->service = serivce;
 					b->box((object*)props, actcs, swch);
 				}
 
 				if (dp2) {
-					hitboxs::boxs* b = contexts[index].instance;
+					hitboxes::boxs* b = contexts[index].instance;
 					b->alpha = alpha;
 					b->service = serivce;
 					b->box((object*)props, actcs, swch);

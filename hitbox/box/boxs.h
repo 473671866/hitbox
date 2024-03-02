@@ -2,7 +2,7 @@
 #include "services.h"
 #include "switched.h"
 
-namespace hitboxs {
+namespace hitboxes {
 	class boxs {
 	public:
 		services* service;
@@ -12,21 +12,21 @@ namespace hitboxs {
 		bool foreground(rect& r, ImColor color);
 
 	public:
-		virtual bool box(object* obj, action_collections actcs, switched swch) = 0;
+		virtual bool box(object* obj, action_collections actcs, switcher swch) = 0;
 	};
 
 	class attack :public boxs {
 	public:
-		bool box(object* obj, action_collections actcs, switched swch) override;
+		bool box(object* obj, action_collections actcs, switcher swch) override;
 	};
 
 	class body : public boxs {
 	public:
-		bool box(object* obj, action_collections actcs, switched swch)override;
+		bool box(object* obj, action_collections actcs, switcher swch)override;
 	};
 
 	class affected : public boxs {
 	public:
-		bool box(object* obj, action_collections actcs, switched swch)override;
+		bool box(object* obj, action_collections actcs, switcher swch)override;
 	};
 };

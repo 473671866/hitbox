@@ -3,7 +3,7 @@
 
 struct context {
 	action_types types;
-	hitboxs::boxs* instance;
+	hitboxes::boxs* instance;
 };
 
 extern context contexts[3];

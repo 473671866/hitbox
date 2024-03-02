@@ -1,6 +1,6 @@
 #include "boxs.h"
 
-namespace hitboxs {
+namespace hitboxes {
 	bool boxs::foreground(rect& r, ImColor color)
 	{
 		FVector w1{};
@@ -25,7 +25,7 @@ namespace hitboxs {
 		return true;
 	}
 
-	bool attack::box(object* obj, action_collections actcs, switched swch) {
+	bool attack::box(object* obj, action_collections actcs, switcher swch) {
 		for (unsigned int i = 0; i < actcs.capacity; i++) {
 			attack_boxs box = actcs.attack[i];
 			if (box.frame != obj->now)
@@ -41,7 +41,7 @@ namespace hitboxs {
 		return true;
 	}
 
-	bool body::box(object* obj, action_collections actcs, switched swch) {
+	bool body::box(object* obj, action_collections actcs, switcher swch) {
 		for (unsigned int i = 0; i < actcs.capacity; i++) {
 			body_boxs box = actcs.body[i];
 			if (box.frame != obj->now)
@@ -53,7 +53,7 @@ namespace hitboxs {
 		return false;
 	}
 
-	bool affected::box(object* obj, action_collections actcs, switched swch) {
+	bool affected::box(object* obj, action_collections actcs, switcher swch) {
 		for (unsigned int i = 0; i < actcs.capacity; i++) {
 			affected_boxs box = actcs.affected[i];
 			if (box.frame != obj->now)

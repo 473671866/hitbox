@@ -1,6 +1,6 @@
 #include "switched.h"
 
-switched switches[] = {
+switcher switches[] = {
 	{u8"普通攻击框",		u8"普通攻击框颜色",		{ 200, 100, 100 },	action_types::attack,	attack_types::normal,		false,	false},
 	{u8"投技框",			u8"投技框颜色",			{ 127, 191, 191 },	action_types::attack,	attack_types::grasp,		false,	false},
 	{u8"飞行道具攻击框",	u8"飞行道具攻击框颜色",	{ 127, 255, 127 },	action_types::attack,	attack_types::projectile,	false,	false},

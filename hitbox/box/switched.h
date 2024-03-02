@@ -2,7 +2,7 @@
 #include "../imgui/imgui.h"
 #include "../structs/object.h"
 
-struct switched {
+struct switcher {
 	const char* name;
 	const char* title;
 	ImColor color;
@@ -12,4 +12,4 @@ struct switched {
 	bool control;
 };
 
-extern switched switches[14];
+extern switcher switches[14];

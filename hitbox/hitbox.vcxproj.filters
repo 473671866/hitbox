@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="unreal_engine">
+      <UniqueIdentifier>{a25b8126-c646-4209-a2fb-ddecf1815606}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imgui">
+      <UniqueIdentifier>{742c2993-b61d-49ce-b4c9-407aa7119fe5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{e9486e4e-10e7-401e-ba20-6693f844a6bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="entity">
+      <UniqueIdentifier>{32cacbc5-f1df-4154-9073-ee66056ecda8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mapper">
+      <UniqueIdentifier>{247b8224-5d54-4e34-9e0d-77bade2b9d8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="service">
+      <UniqueIdentifier>{71c71530-3136-4599-a9bd-672182755ac3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="view">
+      <UniqueIdentifier>{cf850e0f-f311-42ef-a6a7-14b98ec758b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="font">
+      <UniqueIdentifier>{2f6064c8-3bc9-4b98-ad02-87e44e3ca7d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="entry">
+      <UniqueIdentifier>{227ec71f-f33a-4bc4-b2de-c0af65f27998}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="controller">
+      <UniqueIdentifier>{73ea071c-24df-4cd8-b24a-f5414a43a1ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="context">
+      <UniqueIdentifier>{6067180e-e210-48f4-a65f-e04d9009cba9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="imgui\imgui.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_draw.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_dx11.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_win32.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_tables.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_widgets.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\graphics.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\searcher.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="mapper\mapper.cpp">
+      <Filter>mapper</Filter>
+    </ClCompile>
+    <ClCompile Include="service\runable.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="view\decoration.cpp">
+      <Filter>view</Filter>
+    </ClCompile>
+    <ClCompile Include="view\control.cpp">
+      <Filter>view</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="entry\entry.cpp">
+      <Filter>entry</Filter>
+    </ClCompile>
+    <ClCompile Include="font\FontAewsome6.cpp">
+      <Filter>font</Filter>
+    </ClCompile>
+    <ClCompile Include="font\FontAwesome6Brands.cpp">
+      <Filter>font</Filter>
+    </ClCompile>
+    <ClCompile Include="font\msyh.cpp">
+      <Filter>font</Filter>
+    </ClCompile>
+    <ClCompile Include="controller\dominator.cpp">
+      <Filter>controller</Filter>
+    </ClCompile>
+    <ClCompile Include="entity\object.cpp">
+      <Filter>entity</Filter>
+    </ClCompile>
+    <ClCompile Include="service\box.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="context\context.cpp">
+      <Filter>context</Filter>
+    </ClCompile>
+    <ClCompile Include="context\description.cpp">
+      <Filter>context</Filter>
+    </ClCompile>
+    <ClCompile Include="view\scale.cpp">
+      <Filter>view</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="imgui\imconfig.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_dx11.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_win32.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_internal.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_rectpack.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_textedit.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_truetype.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="unreal_engine\AActor.h">
+      <Filter>unreal_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="unreal_engine\Array.h">
+      <Filter>unreal_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="unreal_engine\GameInstance.h">
+      <Filter>unreal_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="unreal_engine\Level.h">
+      <Filter>unreal_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="unreal_engine\NameTypes.h">
+      <Filter>unreal_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="unreal_engine\Platform.h">
+      <Filter>unreal_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="unreal_engine\Player.h">
+      <Filter>unreal_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="unreal_engine\SceneComponent.h">
+      <Filter>unreal_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="unreal_engine\TransformVectorized.h">
+      <Filter>unreal_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="unreal_engine\UObject.h">
+      <Filter>unreal_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="unreal_engine\Vector.h">
+      <Filter>unreal_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="unreal_engine\World.h">
+      <Filter>unreal_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\graphics.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\scope_exit.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\searcher.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\logger.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\singleton.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="entity\action.h">
+      <Filter>entity</Filter>
+    </ClInclude>
+    <ClInclude Include="entity\affected.h">
+      <Filter>entity</Filter>
+    </ClInclude>
+    <ClInclude Include="entity\attack.h">
+      <Filter>entity</Filter>
+    </ClInclude>
+    <ClInclude Include="entity\body.h">
+      <Filter>entity</Filter>
+    </ClInclude>
+    <ClInclude Include="entity\object.h">
+      <Filter>entity</Filter>
+    </ClInclude>
+    <ClInclude Include="entity\objects.h">
+      <Filter>entity</Filter>
+    </ClInclude>
+    <ClInclude Include="entity\props.h">
+      <Filter>entity</Filter>
+    </ClInclude>
+    <ClInclude Include="mapper\mapper.h">
+      <Filter>mapper</Filter>
+    </ClInclude>
+    <ClInclude Include="service\runable.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="view\decoration.h">
+      <Filter>view</Filter>
+    </ClInclude>
+    <ClInclude Include="view\control.h">
+      <Filter>view</Filter>
+    </ClInclude>
+    <ClInclude Include="entry\entry.h">
+      <Filter>entry</Filter>
+    </ClInclude>
+    <ClInclude Include="font\msyh.h">
+      <Filter>font</Filter>
+    </ClInclude>
+    <ClInclude Include="font\FontAewsome6.h">
+      <Filter>font</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\dominator.h">
+      <Filter>controller</Filter>
+    </ClInclude>
+    <ClInclude Include="service\box.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="context\context.h">
+      <Filter>context</Filter>
+    </ClInclude>
+    <ClInclude Include="context\description.h">
+      <Filter>context</Filter>
+    </ClInclude>
+    <ClInclude Include="view\scale.h">
+      <Filter>view</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="font\IconsFontAwesome6Brands.inl">
+      <Filter>font</Filter>
+    </None>
+    <None Include="font\IconsFontAwesome6.inl">
+      <Filter>font</Filter>
+    </None>
+  </ItemGroup>
+</Project>

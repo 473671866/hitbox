@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="utils\loader.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\process.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="utils">
+      <UniqueIdentifier>{c1b9fe6c-cf69-426b-ab37-8bd793e15c18}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="utils\loader.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\MemLoadDll.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\process.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\scope_exit.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\singletion.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -8,8 +8,8 @@ namespace view {
 		int width = rect.right - rect.left;
 		int height = rect.bottom - rect.top;
 		float middle = height * 0.8f;
-		float left = width * 0.05f;
-		float right = width * 0.95f;
+		float left = width * 0.1f;
+		float right = width * 0.9f;
 
 		ImVec2 size = { (float)std::abs(right - left), 20.f };
 		ImVec2 head = { left, middle - size.y / 2 };

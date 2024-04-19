@@ -1,6 +1,7 @@
 #ifndef DOMINATOR_H
 #define DOMINATOR_H
 #include <windows.h>
+#include <memory>
 
 #include "../context/context.h"
 #include "../mapper/mapper.h"
@@ -21,19 +22,22 @@ public:
 	ImFont* font_mshy = nullptr;
 	ImFont* icon_awesmoe = nullptr;
 	ImFont* icon_brands = nullptr;
+	view::scale* sc = nullptr;
 	bool dp1 = false;
 	bool dp2 = false;
 	bool fps = false;
-	bool async = true;
+	bool frame_rule = false;
+	int p1_index = 0;
+	int p2_index = 0;
 	float alpha = 0.2f;
 	float thickness = 1.0f;
 
 public:
 	dominator();
-	bool run();
+	bool principal();
 	bool draw();
-	bool window(HWND h);
-	bool test();
+	bool ruler();
+	bool frame();
 };
 
 #endif // DOMINATOR_H

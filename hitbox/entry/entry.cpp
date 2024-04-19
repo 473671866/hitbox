@@ -43,7 +43,7 @@ HRESULT initialize(IDXGISwapChain* This, UINT SyncInterval, UINT Flags) {
 	ImGui::CreateContext();
 
 	dom = dominator::instance();
-	dom->window(g_hUnrealWindow);
+	dom->hwnd = g_hUnrealWindow;
 
 	ImGuiStyle& style = imgui::GetStyle();
 	style.Colors[ImGuiCol_WindowBg] = ImColor(36, 40, 49, 255).Value;//±³¾°É«
@@ -69,15 +69,16 @@ HRESULT handler(IDXGISwapChain* This, UINT SyncInterval, UINT Flags) {
 	pressed = state;
 
 	if (open) {
-		dom->run();
+		dom->principal();
 	}
 
 	dom->draw();
-	dom->test();
+	dom->ruler();
+	dom->frame();
 	ImGui::Render();
 	g_pd3dDeviceContext->OMSetRenderTargets(1, &g_MainRenderTargetView, nullptr);
 	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
-	return present(This, DXGI_SWAP_EFFECT_DISCARD, Flags);
+	return present(This, SyncInterval, Flags);
 }
 
 HRESULT change(IDXGISwapChain* This, UINT BufferCount, UINT Width, UINT Height, DXGI_FORMAT NewFormat, UINT SwapChainFlags)

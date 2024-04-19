@@ -4,17 +4,18 @@ dominator::dominator() {
 	ImGuiIO& io = imgui::GetIO();
 	float font_size = 16.0f;
 	float icon_size = font_size * 2.0f / 3.0f;
-	ImFont* font_mshy = io.Fonts->AddFontFromMemoryTTF(msyh, sizeof(msyh), 17.0f, nullptr, io.Fonts->GetGlyphRangesChineseFull());
+	font_mshy = io.Fonts->AddFontFromMemoryTTF(msyh, sizeof(msyh), 17.0f, nullptr, io.Fonts->GetGlyphRangesChineseFull());
 	static const ImWchar icons_ranges[] = { ICON_MIN_FA, ICON_MAX_16_FA,0 };
 	ImFontConfig icons_config;
 	icons_config.MergeMode = true;
 	icons_config.PixelSnapH = true;
 	icons_config.GlyphMinAdvanceX = icon_size;
-	ImFont* icon_awesmoe = io.Fonts->AddFontFromMemoryTTF(FontAewsome6, sizeof(FontAewsome6), icon_size, &icons_config, icons_ranges);
-	ImFont* icon_brands = io.Fonts->AddFontFromMemoryTTF(FontAwesome6Brands, sizeof(FontAwesome6Brands), 30.0f, &icons_config, icons_ranges);
+	icon_awesmoe = io.Fonts->AddFontFromMemoryTTF(FontAewsome6, sizeof(FontAewsome6), icon_size, &icons_config, icons_ranges);
+	icon_brands = io.Fonts->AddFontFromMemoryTTF(FontAwesome6Brands, sizeof(FontAwesome6Brands), 30.0f, &icons_config, icons_ranges);
+	sc = view::scale::instance();
 }
 
-bool dominator::run()
+bool dominator::principal()
 {
 	view::compoment hb;
 	hb.ins("setting", [&] {
@@ -49,13 +50,8 @@ bool dominator::run()
 	view::compoment rule;
 	rule.ins("scale", [&] {
 		control::trigger("FPS", &fps);
+		control::trigger(u8"帧数表", &frame_rule);
 
-		static bool open = false;
-		control::trigger(u8"帧数表", &open);
-
-		view::scale* sc = view::scale::instance();
-
-		static int p1_index = 0;
 		imgui::PushID(200);
 		imgui::InputInt("", &p1_index);
 		imgui::PopID();
@@ -64,7 +60,6 @@ bool dominator::run()
 				sc->p1(p1_index, 1, YELLOW);
 			}});
 
-		static int p2_index = 0;
 		imgui::PushID(201);
 		imgui::InputInt("", &p2_index);
 		imgui::PopID();
@@ -72,11 +67,6 @@ bool dominator::run()
 		control::button("p2", [&] { {
 				sc->p2(p2_index, 1, RED);
 			}});
-
-		if (open) {
-			sc->win(hwnd);
-			sc->show();
-		}
 		});
 
 	view::decoration decor;
@@ -108,24 +98,35 @@ bool dominator::draw()
 		if (!desc.activity)
 			continue;
 
-		actions_entry entry = p1->acts->entry[p1->number];
-		for (int i = 0; i < entry.capacity && entry.actcs != nullptr && IsBadReadPtr(&entry.actcs[i], sizeof(actions_entry)) == 0; i++) {
-			action_collections actcs = entry.actcs[i];
-			if (actcs.types != desc.action)
-				continue;
+		if (dp1) {
+			actions_entry entry = p1->acts->entry[p1->number];
+			for (int i = 0; i < entry.capacity && entry.actcs != nullptr && IsBadReadPtr(&entry.actcs[i], sizeof(actions_entry)) == 0; i++) {
+				action_collections actcs = entry.actcs[i];
+				if (actcs.types != desc.action)
+					continue;
 
-			int index = (int)actcs.types - 3;
-			if (index < 0 or index > 3)
-				continue;
+				int index = (int)actcs.types - 3;
+				if (index < 0 or index > 3)
+					continue;
 
-			if (dp1) {
 				hitboxes::box* b = contexts[index].instance;
 				b->alpha = alpha;
 				b->thickness = thickness;
 				b->resolve(p1, actcs, desc);
 			}
+		}
 
-			if (dp2) {
+		if (dp2) {
+			actions_entry entry = p2->acts->entry[p2->number];
+			for (int i = 0; i < entry.capacity && entry.actcs != nullptr && IsBadReadPtr(&entry.actcs[i], sizeof(actions_entry)) == 0; i++) {
+				action_collections actcs = entry.actcs[i];
+				if (actcs.types != desc.action)
+					continue;
+
+				int index = (int)actcs.types - 3;
+				if (index < 0 or index > 3)
+					continue;
+
 				hitboxes::box* b = contexts[index].instance;
 				b->alpha = alpha;
 				b->thickness = thickness;
@@ -168,17 +169,22 @@ bool dominator::draw()
 	return true;
 }
 
-bool dominator::window(HWND h) {
-	hwnd = h;
-	return true;
+bool dominator::ruler() {
+	if (frame_rule) {
+		sc->win(hwnd);
+		sc->show();
+	}
+
+	return frame_rule;
 }
 
-bool dominator::test() {
+bool dominator::frame()
+{
 	if (fps) {
 		ImGuiIO& io = imgui::GetIO();
 		char buffer[256] = {};
 		sprintf_s(buffer, "FPS: %.0f", io.Framerate);
 		imgui::GetForegroundDrawList()->AddText({ 10,10 }, IM_COL32_WHITE, buffer);
 	}
-	return true;
+	return fps;
 }

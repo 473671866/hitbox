@@ -25,7 +25,11 @@ int main() {
 	try {
 		utils::loader load;
 		//load.shadow(L"KOFXV-Win64-Shipping.exe", hitbox, sizeof(hitbox));
-		load.remote_thread(L"KOFXV-Win64-Shipping.exe", "C:\\Users\\Administrator\\Desktop\\hitbox\\x64\\Debug\\hitbox.dll");
+#ifdef _DEBUG
+		load.remote_thread(L"KOFXV-Win64-Shipping.exe", "..\\x64\\Debug\\hitbox.dll");
+#else
+		load.remote_thread(L"KOFXV-Win64-Shipping.exe", "..\\x64\\Release\\hitbox.dll");
+#endif
 	}
 	catch (std::exception& e) {
 		MessageBoxA(0, e.what(), "warning", MB_OK);

@@ -71,26 +71,33 @@ namespace view {
 
 		//µº∫Ω¿∏
 		static int navs = 0;
-		imgui::BeginGroup();
-		for (int i = 0; i < components.size(); i++) {
-			imgui::PushFont(icons);
+		if (navs >= components.size()) {
+			navs = 0;
+		}
 
-			std::string name = components[i].first;
-			if (control::navigation(name.c_str(), navs == i)) {
+		imgui::BeginGroup();
+		imgui::PushFont(icons);
+		for (int i = 0; i < components.size(); i++) {
+			std::string icon = components[i].first;
+			if (control::navigation(icon.c_str(), navs == i)) {
 				navs = i;
 			}
-			imgui::PopFont();
 		}
+		imgui::PopFont();
 		imgui::EndGroup();
+
+		compoment nav = components[navs].second;
+		static int paginations = 0;
+		if (paginations >= nav.elements.size()) {
+			paginations = 0;
+		}
 
 		//∑÷“≥
 		imgui::SetCursorPos({ barsize, 0 });
 		imgui::BeginChild("##PAGINATION", { wndsize.x + barsize, barsize * 0.5f });
 		imgui::BeginGroup();
-		compoment nav = components[navs].second;
-		static int paginations = 0;
 		for (int i = 0; i < nav.elements.size(); i++) {
-			auto [tag, temp] = nav.elements[i];
+			std::string tag = nav.elements[i].first;
 			if (control::pagination(tag.c_str(), paginations == i)) {
 				paginations = i;
 			}
@@ -104,7 +111,12 @@ namespace view {
 		imgui::BeginChild("##PAGE", { wndsize.x - barsize - 15, wndsize.y - barsize * 0.5f - 10 }, false, ImGuiWindowFlags_Background);
 		imgui::SetCursorPos({ 10,10 });
 		imgui::BeginGroup();
-		nav.elements[paginations].second();
+
+		std::function<void()> callable = nav.elements[paginations].second;
+		if (callable) {
+			std::invoke(callable);
+		}
+
 		imgui::EndGroup();
 		imgui::EndChild();
 		imgui::End();

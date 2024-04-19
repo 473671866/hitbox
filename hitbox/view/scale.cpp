@@ -60,10 +60,10 @@ namespace view {
 		hwnd = h;
 	}
 
-	void scale::p1(int index, int size, ImU32 color) {
-		if (index < col1.size()) {
-			std::fill(col1.begin() + index, col1.begin() + index + size, color);
-		}
+#include "../utils/logger.hpp"
+	void scale::p1(int counter, ImU32 color) {
+		logger("p1 fream: %d", counter);
+		std::fill(col1.begin(), col1.begin() + counter, color);
 	}
 
 	void scale::p2(int index, int size, ImU32 color)

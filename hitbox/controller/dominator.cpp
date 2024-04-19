@@ -57,16 +57,16 @@ bool dominator::principal()
 		imgui::PopID();
 		imgui::SameLine();
 		control::button("p1", [&] { {
-				sc->p1(p1_index, 1, YELLOW);
+				sc->p1(1, YELLOW);
 			}});
 
-		imgui::PushID(201);
-		imgui::InputInt("", &p2_index);
-		imgui::PopID();
-		imgui::SameLine();
-		control::button("p2", [&] { {
-				sc->p2(p2_index, 1, RED);
-			}});
+		//imgui::PushID(201);
+		//imgui::InputInt("", &p2_index);
+		//imgui::PopID();
+		//imgui::SameLine();
+		//control::button("p2", [&] { {
+		//		sc->p2(p2_index, 1, RED);
+		//	}});
 		});
 
 	view::decoration decor;
@@ -170,10 +170,39 @@ bool dominator::draw()
 }
 
 bool dominator::ruler() {
-	if (frame_rule) {
-		sc->win(hwnd);
-		sc->show();
+	if (!frame_rule) {
+		return false;
 	}
+
+	auto mapping = mapper::instance();
+
+	int frame_count = 0;
+	auto objs = *mapping->objs;
+	if (objs == nullptr)
+		return false;
+
+	auto p1 = objs->p1;
+	if (p1 == nullptr)
+		return false;
+
+	actions_entry entry = p1->acts->entry[p1->number];
+	for (int i = 0; i < entry.capacity && entry.actcs != nullptr && IsBadReadPtr(&entry.actcs[i], sizeof(actions_entry)) == 0; i++) {
+		action_collections actcs = entry.actcs[i];
+		if (actcs.types != action_types::attack)
+			continue;
+
+		for (unsigned int j = 0; j < actcs.capacity; j++) {
+			auto box = actcs.attack[j];
+			if (p1->atcs->atccs[box.number].types != attack_types::normal)
+				continue;
+
+			frame_count = actcs.attack[0].frame;
+		}
+	}
+
+	sc->p1(frame_count, RED);
+	sc->win(hwnd);
+	sc->show();
 
 	return frame_rule;
 }

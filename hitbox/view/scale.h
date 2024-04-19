@@ -25,7 +25,7 @@ namespace view {
 	public:
 		void show();
 		void win(HWND h);
-		void p1(int index, int size, ImU32 color);
+		void p1(int counter, ImU32 color);
 		void p2(int index, int size, ImU32 color);
 	};
 }

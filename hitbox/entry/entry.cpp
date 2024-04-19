@@ -7,6 +7,7 @@
 #include "../font/IconsFontAwesome6Brands.inl"
 
 #include "../utils/graphics.h"
+#include "../utils/logger.hpp"
 #include "../controller/dominator.h"
 #include "../mapper/mapper.h"
 #include "../service/runable.h"
@@ -148,6 +149,7 @@ bool entry(HMODULE hmodule)
 		return false;
 	}
 
+	loggers::initialize();
 	graphic->hook(initialize, &present, options::present);
 	graphic->hook(change, &resize, options::resize);
 	return true;

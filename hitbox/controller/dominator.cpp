@@ -18,7 +18,7 @@ dominator::dominator() {
 bool dominator::principal()
 {
 	view::compoment hb;
-	hb.ins("setting", [&] {
+	hb.ins("settings", [&] {
 		control::trigger("p1", &dp1);
 
 		control::trigger("p2", &dp2);
@@ -40,7 +40,7 @@ bool dominator::principal()
 		imgui::PopID();
 		});
 
-	hb.ins("hitbox", [&] {
+	hb.ins("hitboxes", [&] {
 		for (int i = 0; i < (sizeof(descriptions) / sizeof(description)); i++) {
 			description* desc = &descriptions[i];
 			control::label(desc->btn, desc->title, &desc->open, &desc->activity, &desc->color);
@@ -59,14 +59,6 @@ bool dominator::principal()
 		control::button("p1", [&] { {
 				sc->p1(1, YELLOW);
 			}});
-
-		//imgui::PushID(201);
-		//imgui::InputInt("", &p2_index);
-		//imgui::PopID();
-		//imgui::SameLine();
-		//control::button("p2", [&] { {
-		//		sc->p2(p2_index, 1, RED);
-		//	}});
 		});
 
 	view::decoration decor;

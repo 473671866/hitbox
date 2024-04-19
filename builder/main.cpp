@@ -1,36 +1,32 @@
 #include <iostream>
+#include <memory>
 #include <fstream>
 #include <filesystem>
-#include "scope_exit.hpp"
 
 int main(int arg, char** argv) {
 	if (arg < 3) {
+		std::cout << "usage: " << " <source> <result>\n";
 		return -1;
 	}
 
 	//读
 	std::filesystem::path file_path(argv[1]);
 	if (!std::filesystem::exists(file_path)) {
-		std::cerr << "文件不存在\n";
-		system("pause");
+		std::cerr << "file not exists\n";
 		return -2;
 	}
 
-	std::ifstream istream(file_path, std::ios::binary);
-	auto istream_close = std::make_scope_exit([&]() { istream.close(); });
-	if (istream.is_open() == false) {
-		std::cerr << "打开文件失败\n";
-		system("pause");
+	std::ifstream ifs(file_path, std::ios::binary);
+	if (ifs.is_open() == false) {
+		std::cerr << "open file failed\n";
 		return -3;
 	}
 
 	auto filesize = std::filesystem::file_size(file_path);
-	unsigned char* filebuffer = new unsigned char[filesize];
-	auto delete_buffer = std::make_scope_exit([&]() { delete[] filebuffer; });
-	istream.read((char*)filebuffer, filesize);
-	if (istream.fail()) {
-		std::cerr << "读取文件失败\n";
-		system("pause");
+	std::unique_ptr<unsigned char[]> filebuffer(new unsigned char[filesize]);
+	ifs.read((char*)filebuffer.get(), filesize);
+	if (ifs.fail()) {
+		std::cerr << "file read failed\n";
 		return -4;
 	}
 
@@ -40,35 +36,32 @@ int main(int arg, char** argv) {
 	std::filesystem::path source = directory / file_path.replace_extension(".cpp").filename();
 
 	//头文件
-	std::ofstream ostream(header, std::ios::binary);
-	if (!ostream.is_open()) {
-		std::cerr << "创建文件失败\n";
-		system("pause");
+	std::ofstream ofs(header, std::ios::binary);
+	if (!ofs.is_open()) {
+		std::cerr << "create .h failed\n";
 		return -5;
 	}
-	ostream << "#pragma once\n";
-	ostream << "extern unsigned char " << file_path.stem().string() << "[" << filesize << "];" << std::endl;
-	ostream.close();
+	ofs << "#pragma once\n";
+	ofs << "extern unsigned char " << file_path.stem().string() << "[" << filesize << "];" << std::endl;
+	ofs.close();
 
 	//源文件
-	ostream.open(source, std::ios::binary);
-	if (!ostream.is_open()) {
-		std::cerr << "创建文件失败\n";
-		system("pause");
+	ofs.open(source, std::ios::binary);
+	if (!ofs.is_open()) {
+		std::cerr << "create .cpp failed\n";
 		return -6;
 	}
 
-	ostream << "#include \"" << header.filename().string() << "\"" << std::endl;
-	ostream << "unsigned char " << file_path.stem().string() << "[" << filesize << "] = {" << std::endl;
-	ostream << "\t";
+	ofs << "#include \"" << header.filename().string() << "\"" << std::endl;
+	ofs << "unsigned char " << file_path.stem().string() << "[" << filesize << "] = {" << std::endl;
+	ofs << "\t";
 	for (int i = 0; i < filesize; i++) {
-		ostream << "0x" << std::setw(2) << std::setfill('0') << std::hex << static_cast<int>(filebuffer[i]) << ", ";
+		ofs << "0x" << std::setw(2) << std::setfill('0') << std::hex << static_cast<int>(filebuffer[i]) << ", ";
 		if ((i + 1) % 20 == 0) {
-			ostream << "\r\n\t";
+			ofs << "\r\n\t";
 		}
 	}
-	ostream << "\r\n};";
-	ostream.close();
-
+	ofs << "\r\n};";
+	std::cout << "build " << file_path.filename().string() << " success\n";
 	return 0;
 }

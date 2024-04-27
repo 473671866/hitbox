@@ -149,9 +149,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="context\context.cpp" />
+    <ClCompile Include="context\configuration.cpp" />
     <ClCompile Include="context\description.cpp" />
     <ClCompile Include="controller\dominator.cpp" />
+    <ClCompile Include="controller\renderer.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="entity\object.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -170,6 +171,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="service\box.cpp" />
+    <ClCompile Include="service\dispatcher.cpp" />
+    <ClCompile Include="service\overview.cpp" />
     <ClCompile Include="service\runable.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
@@ -180,9 +183,10 @@
     <ClCompile Include="view\scale.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="context\context.h" />
+    <ClInclude Include="context\configuration.h" />
     <ClInclude Include="context\description.h" />
     <ClInclude Include="controller\dominator.h" />
+    <ClInclude Include="controller\renderer.h" />
     <ClInclude Include="entity\action.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
@@ -205,6 +209,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="entry\entry.h" />
+    <ClInclude Include="font\alifont.hpp" />
     <ClInclude Include="font\FontAewsome6.h" />
     <ClInclude Include="font\msyh.h" />
     <ClInclude Include="imgui\imconfig.h" />
@@ -219,6 +224,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="service\box.h" />
+    <ClInclude Include="service\dispatcher.h" />
+    <ClInclude Include="service\overview.h" />
     <ClInclude Include="service\runable.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
@@ -236,7 +243,7 @@
     <ClInclude Include="unreal_engine\World.h" />
     <ClInclude Include="utils\graphics.h" />
     <ClInclude Include="utils\logger.hpp" />
-    <ClInclude Include="utils\scope_exit.hpp" />
+    <ClInclude Include="utils\release.hpp" />
     <ClInclude Include="utils\searcher.h" />
     <ClInclude Include="utils\singleton.hpp" />
     <ClInclude Include="view\control.h" />

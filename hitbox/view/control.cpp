@@ -120,14 +120,12 @@ namespace control {
 	bool label(int btn, const char* title, bool* open, bool* selected, ImColor* color) {
 		imgui::Text(title); imgui::SameLine();
 
-		imgui::PushID(btn + 10);
-		imgui::ColorButton("", color->Value); imgui::SameLine();
-		imgui::PopID();
-
 		imgui::PushID(btn);
-		if (imgui::Button(u8"ÐÞ¸ÄÑÕÉ«")) {
+		if (imgui::ColorButton("", color->Value)) {
 			*open = !(*open);
 		}
+
+		imgui::SameLine();
 		imgui::PopID();
 
 		if (*open) {

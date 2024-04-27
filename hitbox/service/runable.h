@@ -14,8 +14,7 @@ private:
 
 public:
 	bool initialize(UWorld** uworld, void* p);
-
 	bool screen(const FVector& WorldPosition, FVector2D& ScreenPosition);
 };
 
-#endif // !RUNABLE_H
+#endif // RUNABLE_H

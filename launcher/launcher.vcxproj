@@ -149,7 +149,6 @@
     <ClInclude Include="utils\loader.h" />
     <ClInclude Include="utils\MemLoadDll.h" />
     <ClInclude Include="utils\process.h" />
-    <ClInclude Include="utils\scope_exit.hpp" />
     <ClInclude Include="utils\singletion.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

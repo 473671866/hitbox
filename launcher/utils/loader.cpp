@@ -1,6 +1,5 @@
 #include "loader.h"
 #include "MemLoadDll.h"
-#include "scope_exit.hpp"
 #include "process.h"
 
 namespace utils {

@@ -22,6 +22,22 @@ bool mapper::initliaze()
 	return true;
 }
 
+bool mapper::checks() {
+	auto objs = *this->objs;
+	if (objs == nullptr)
+		return false;
+
+	auto p1 = objs->p1;
+	if (p1 == nullptr)
+		return false;
+
+	auto p2 = objs->p2;
+	if (p2 == nullptr)
+		return false;
+
+	return  true;
+}
+
 //bool mapper::screen(box_helper& r)
 //{
 //	FVector w1{};

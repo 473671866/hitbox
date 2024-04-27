@@ -72,7 +72,6 @@
     <ClCompile Include="view\control.cpp">
       <Filter>view</Filter>
     </ClCompile>
-    <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="entry\entry.cpp">
       <Filter>entry</Filter>
     </ClCompile>
@@ -94,14 +93,24 @@
     <ClCompile Include="service\box.cpp">
       <Filter>service</Filter>
     </ClCompile>
-    <ClCompile Include="context\context.cpp">
-      <Filter>context</Filter>
-    </ClCompile>
     <ClCompile Include="context\description.cpp">
       <Filter>context</Filter>
     </ClCompile>
     <ClCompile Include="view\scale.cpp">
       <Filter>view</Filter>
+    </ClCompile>
+    <ClCompile Include="service\overview.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="service\dispatcher.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="context\configuration.cpp">
+      <Filter>context</Filter>
+    </ClCompile>
+    <ClCompile Include="controller\renderer.cpp">
+      <Filter>controller</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -168,7 +177,7 @@
     <ClInclude Include="utils\graphics.h">
       <Filter>utils</Filter>
     </ClInclude>
-    <ClInclude Include="utils\scope_exit.hpp">
+    <ClInclude Include="utils\release.hpp">
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="utils\searcher.h">
@@ -228,14 +237,26 @@
     <ClInclude Include="service\box.h">
       <Filter>service</Filter>
     </ClInclude>
-    <ClInclude Include="context\context.h">
-      <Filter>context</Filter>
-    </ClInclude>
     <ClInclude Include="context\description.h">
       <Filter>context</Filter>
     </ClInclude>
     <ClInclude Include="view\scale.h">
       <Filter>view</Filter>
+    </ClInclude>
+    <ClInclude Include="service\overview.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="service\dispatcher.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="context\configuration.h">
+      <Filter>context</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\renderer.h">
+      <Filter>controller</Filter>
+    </ClInclude>
+    <ClInclude Include="font\alifont.hpp">
+      <Filter>font</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

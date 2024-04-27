@@ -20,6 +20,8 @@ public:
 
 public:
 	bool initliaze();
+
+	bool checks();
 };
 
 #endif // MAPPER_H

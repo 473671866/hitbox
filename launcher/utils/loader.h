@@ -10,7 +10,7 @@
 namespace utils {
 #pragma pack(push, 1)
 	struct trampline {
-		std::uint8_t jmp[0x6] = { 0xff, 0x25, 0, 0, 0, 0 };
+		std::uint8_t tramp[0x6] = { 0xff, 0x25, 0, 0, 0, 0 };
 		std::uintmax_t address;
 	};
 #pragma pack(pop)

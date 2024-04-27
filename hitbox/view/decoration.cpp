@@ -70,32 +70,32 @@ namespace view {
 		imgui::EndChild();
 
 		//µº∫Ω¿∏
-		static int navs = 0;
-		if (navs >= components.size()) {
-			navs = 0;
-		}
 
 		imgui::BeginGroup();
 		imgui::PushFont(icons);
+
+		static int navs = 0;
 		for (int i = 0; i < components.size(); i++) {
 			std::string icon = components[i].first;
 			if (control::navigation(icon.c_str(), navs == i)) {
 				navs = i;
 			}
 		}
+
+		if (navs >= components.size()) {
+			navs = 0;
+		}
+
 		imgui::PopFont();
 		imgui::EndGroup();
 
 		compoment nav = components[navs].second;
-		static int paginations = 0;
-		if (paginations >= nav.elements.size()) {
-			paginations = 0;
-		}
 
 		//∑÷“≥
 		imgui::SetCursorPos({ barsize, 0 });
 		imgui::BeginChild("##PAGINATION", { wndsize.x + barsize, barsize * 0.5f });
 		imgui::BeginGroup();
+		static int paginations = 0;
 		for (int i = 0; i < nav.elements.size(); i++) {
 			std::string tag = nav.elements[i].first;
 			if (control::pagination(tag.c_str(), paginations == i)) {
@@ -103,6 +103,11 @@ namespace view {
 			}
 			imgui::SameLine();
 		}
+
+		if (paginations >= nav.elements.size()) {
+			paginations = 0;
+		}
+
 		imgui::EndGroup();
 		imgui::EndChild();
 

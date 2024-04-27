@@ -1,4 +1,6 @@
-#pragma once
+#ifndef DESCRIPTION_H
+#define DESCRIPTION_H
+
 #include "../imgui/imgui.h"
 #include "../entity/object.h"
 
@@ -13,3 +15,5 @@ struct description {
 };
 
 extern description descriptions[14];
+
+#endif

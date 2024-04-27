@@ -1,25 +1,29 @@
 #include "entry.h"
+#include "../mapper/mapper.h"
 
-#include "../font/msyh.h"
+#include "../service/runable.h"
+
+#include "../context/configuration.h"
+
+#include "../controller/renderer.h"
+#include "../controller/dominator.h"
+
+#include "../utils/graphics.h"
+#include "../utils/logger.hpp"
+
+//#include "../font/msyh.h"
+#include "../font/alifont.hpp"
 #include "../font/FontAewsome6.h"
 #include "../font/IconsFontAwesome6.inl"
 #include "../font/FontAwesome6Brands.h"
 #include "../font/IconsFontAwesome6Brands.inl"
 
-#include "../utils/graphics.h"
-#include "../utils/logger.hpp"
-#include "../controller/dominator.h"
-#include "../mapper/mapper.h"
-#include "../service/runable.h"
-
 ID3D11Device* g_pd3dDevice = nullptr;
 ID3D11DeviceContext* g_pd3dDeviceContext = nullptr;
 IDXGISwapChain* g_pSwapChain = nullptr;
 ID3D11RenderTargetView* g_MainRenderTargetView = nullptr;
-HWND g_hUnrealWindow = nullptr;
 WNDPROC g_lpOriginalWndproc = nullptr;
 
-dominator* dom = nullptr;
 HRESULT(*present)(IDXGISwapChain* This, UINT SyncInterval, UINT Flags) = nullptr;
 HRESULT(*resize)(IDXGISwapChain* This, UINT BufferCount, UINT Width, UINT Height, DXGI_FORMAT NewFormat, UINT SwapChainFlags) = nullptr;
 
@@ -43,15 +47,29 @@ HRESULT initialize(IDXGISwapChain* This, UINT SyncInterval, UINT Flags) {
 
 	ImGui::CreateContext();
 
-	dom = dominator::instance();
-	dom->hwnd = g_hUnrealWindow;
+	ImGuiIO& io = imgui::GetIO();
+	float font_size = 16.0f;
+	float icon_size = font_size * 2.0f / 3.0f;
+
+	ImFontConfig ifc;
+	ifc.FontDataOwnedByAtlas = false;
+	configurs::font_ali = io.Fonts->AddFontFromMemoryTTF((void*)alifont_data, alifont_size, 17.0f, &ifc, io.Fonts->GetGlyphRangesChineseFull());
+	//configurs::font_mshy = io.Fonts->AddFontFromMemoryTTF(msyh, sizeof(msyh), 17.0f, nullptr, io.Fonts->GetGlyphRangesChineseFull());
+
+	static const ImWchar icons_ranges[] = { ICON_MIN_FA, ICON_MAX_16_FA,0 };
+	ImFontConfig icons_config;
+	icons_config.MergeMode = true;
+	icons_config.PixelSnapH = true;
+	icons_config.GlyphMinAdvanceX = icon_size;
+	configurs::icon_awesmoe = io.Fonts->AddFontFromMemoryTTF(FontAewsome6, sizeof(FontAewsome6), icon_size, &icons_config, icons_ranges);
+	configurs::icon_brands = io.Fonts->AddFontFromMemoryTTF(FontAwesome6Brands, sizeof(FontAwesome6Brands), 30.0f, &icons_config, icons_ranges);
 
 	ImGuiStyle& style = imgui::GetStyle();
 	style.Colors[ImGuiCol_WindowBg] = ImColor(36, 40, 49, 255).Value;//±³¾°É«
 	style.FrameRounding = 4.0f;//Ô²½Ç
 
 	ImGui::StyleColorsDark();
-	ImGui_ImplWin32_Init(g_hUnrealWindow);
+	ImGui_ImplWin32_Init(configurs::unrealwindow);
 	ImGui_ImplDX11_Init(g_pd3dDevice, g_pd3dDeviceContext);
 
 	graphics::instance()->hook(handler, nullptr, options::present);
@@ -70,12 +88,13 @@ HRESULT handler(IDXGISwapChain* This, UINT SyncInterval, UINT Flags) {
 	pressed = state;
 
 	if (open) {
-		dom->principal();
+		dominator dom;
+		dom.window();
 	}
 
-	dom->draw();
-	dom->ruler();
-	dom->frame();
+	renderer render;
+	render.render();
+
 	ImGui::Render();
 	g_pd3dDeviceContext->OMSetRenderTargets(1, &g_MainRenderTargetView, nullptr);
 	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
@@ -136,15 +155,15 @@ bool entry(HMODULE hmodule)
 		return false;
 	}
 
-	g_hUnrealWindow = FindWindowA("UnrealWindow", "KOFXV  ");
-	g_lpOriginalWndproc = (WNDPROC)SetWindowLongPtr(g_hUnrealWindow, GWLP_WNDPROC, (LONG_PTR)WndProc);
+	configurs::unrealwindow = FindWindowA("UnrealWindow", "KOFXV  ");
+	g_lpOriginalWndproc = (WNDPROC)SetWindowLongPtr(configurs::unrealwindow, GWLP_WNDPROC, (LONG_PTR)WndProc);
 	if (g_lpOriginalWndproc == nullptr) {
 		throw std::exception("SetWindowLongPtr failed");
 		return false;
 	}
 
 	graphics* graphic = graphics::instance();
-	if (graphic->initialize(g_hUnrealWindow) == false) {
+	if (graphic->initialize(configurs::unrealwindow) == false) {
 		throw std::exception("graphics initialize failed");
 		return false;
 	}

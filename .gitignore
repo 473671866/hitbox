@@ -2,6 +2,4 @@
 /x64
 /builder/x64
 /hitbox/x64
-/hitbox/font/*.h
-/hitbox/font/*.cpp
 /launcher/x64

@@ -24,9 +24,6 @@
     <ClInclude Include="utils\process.h">
       <Filter>utils</Filter>
     </ClInclude>
-    <ClInclude Include="utils\scope_exit.hpp">
-      <Filter>utils</Filter>
-    </ClInclude>
     <ClInclude Include="utils\singletion.hpp">
       <Filter>utils</Filter>
     </ClInclude>

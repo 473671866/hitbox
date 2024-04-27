@@ -56,14 +56,29 @@ namespace view {
 		}
 	}
 
-	void scale::win(HWND h) {
+	void scale::wnd(HWND h) {
 		hwnd = h;
 	}
 
-#include "../utils/logger.hpp"
-	void scale::p1(int counter, ImU32 color) {
-		logger("p1 fream: %d", counter);
-		std::fill(col1.begin(), col1.begin() + counter, color);
+	void scale::p1(int counter, ImU32 color, int num) {
+		if (last != num && lcolor != color) {
+			last = num;
+			lcolor = color;
+		}
+		else {
+			return;
+		}
+
+		if (counter <= 0) {
+			return;
+		}
+
+		if (index > col1.size() || index + counter > col1.size()) {
+			index = 0;
+		}
+
+		std::fill(col1.begin() + index, col1.begin() + counter + index, color);
+		index += counter;
 	}
 
 	void scale::p2(int index, int size, ImU32 color)

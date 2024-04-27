@@ -81,9 +81,6 @@
     <ClCompile Include="font\FontAwesome6Brands.cpp">
       <Filter>font</Filter>
     </ClCompile>
-    <ClCompile Include="font\msyh.cpp">
-      <Filter>font</Filter>
-    </ClCompile>
     <ClCompile Include="controller\dominator.cpp">
       <Filter>controller</Filter>
     </ClCompile>
@@ -224,9 +221,6 @@
     </ClInclude>
     <ClInclude Include="entry\entry.h">
       <Filter>entry</Filter>
-    </ClInclude>
-    <ClInclude Include="font\msyh.h">
-      <Filter>font</Filter>
     </ClInclude>
     <ClInclude Include="font\FontAewsome6.h">
       <Filter>font</Filter>

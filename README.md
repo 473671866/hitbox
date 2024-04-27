@@ -8,7 +8,9 @@
 
 ### 使用
 
-在[发布页](https://github.com/473671866/hitbox/releases)中下载`launcher.exe`
+在[发布页](https://github.com/473671866/hitbox/releases)中下载`hitbox.7z`
+
+解压
 
 启动游戏
 

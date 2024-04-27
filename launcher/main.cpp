@@ -1,12 +1,12 @@
 #include <iostream>
 #include <windows.h>
 #include "utils/loader.h"
+#pragma comment(linker, "/subsystem:windows /entry:mainCRTStartup")
 
 #ifdef _DEBUG
 constexpr auto path = "..\\x64\\Debug\\hitbox.dll";
 #else
-#pragma comment(linker, "/subsystem:windows /entry:mainCRTStartup")
-constexpr auto path = "..\\x64\\Release\\hitbox.dll";
+constexpr auto path = ".\\hitbox.dll";
 #endif
 
 int main() {

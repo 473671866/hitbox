@@ -8,13 +8,7 @@
 
 ### 使用
 
-在[发布页](https://github.com/473671866/hitbox/releases)中下载`hitbox.7z`
-
-启动游戏
-
-启动`launcher.exe`
-
-通过`F1`开关窗口
+自行编译
 
 ***
 

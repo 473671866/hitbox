@@ -24,4 +24,4 @@ public:
 	bool hook(void* handler, void* original, options op);
 };
 
-#endif // !GRAPHICS_H
+#endif // GRAPHICS_H

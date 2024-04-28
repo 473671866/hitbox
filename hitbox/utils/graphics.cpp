@@ -24,27 +24,27 @@ bool graphics::initialize(HWND hwnd)
 		return false;
 	}
 
-	virtual_table = *reinterpret_cast<void***>(chain);
+	vfptr = *reinterpret_cast<void***>(chain);
 	return true;
 }
 
 bool graphics::attach(void* handler, void* original, options op) {
-	if (original == nullptr) {
-		return false;
-	}
-
-	if (virtual_table == nullptr || handler == nullptr) {
+	if (vfptr == nullptr || handler == nullptr) {
 		return false;
 	}
 
 	unsigned long protect = 0;
-	if (!VirtualProtect(virtual_table, 1, PAGE_EXECUTE_READWRITE, &protect)) {
+	if (!VirtualProtect(vfptr, 1, PAGE_EXECUTE_READWRITE, &protect)) {
 		return false;
 	}
 
 	int index = static_cast<int>(op);
-	*reinterpret_cast<void**>(original) = virtual_table[index];
-	virtual_table[index] = handler;
-	VirtualProtect(virtual_table, 1, protect, &protect);
+	void* source = vfptr[index];
+	vfptr[index] = handler;
+	VirtualProtect(vfptr, 1, protect, &protect);
+
+	if (original) {
+		*reinterpret_cast<void**>(original) = source;
+	}
 	return true;
 }

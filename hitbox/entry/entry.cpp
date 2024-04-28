@@ -11,7 +11,6 @@
 #include "../utils/graphics.h"
 #include "../utils/logger.hpp"
 
-//#include "../font/msyh.h"
 #include "../font/alifont.hpp"
 #include "../font/FontAewsome6.h"
 #include "../font/IconsFontAwesome6.inl"
@@ -54,7 +53,6 @@ HRESULT initialize(IDXGISwapChain* This, UINT SyncInterval, UINT Flags) {
 	ImFontConfig ifc;
 	ifc.FontDataOwnedByAtlas = false;
 	configurs::font_ali = io.Fonts->AddFontFromMemoryTTF((void*)alifont_data, alifont_size, 17.0f, &ifc, io.Fonts->GetGlyphRangesChineseFull());
-	//configurs::font_mshy = io.Fonts->AddFontFromMemoryTTF(msyh, sizeof(msyh), 17.0f, nullptr, io.Fonts->GetGlyphRangesChineseFull());
 
 	static const ImWchar icons_ranges[] = { ICON_MIN_FA, ICON_MAX_16_FA,0 };
 	ImFontConfig icons_config;
@@ -72,7 +70,7 @@ HRESULT initialize(IDXGISwapChain* This, UINT SyncInterval, UINT Flags) {
 	ImGui_ImplWin32_Init(configurs::unrealwindow);
 	ImGui_ImplDX11_Init(g_pd3dDevice, g_pd3dDeviceContext);
 
-	graphics::instance()->hook(handler, nullptr, options::present);
+	graphics::instance()->attach(handler, nullptr, options::present);
 	return present(This, SyncInterval, Flags);
 }
 
@@ -110,7 +108,7 @@ HRESULT change(IDXGISwapChain* This, UINT BufferCount, UINT Width, UINT Height, 
 		g_MainRenderTargetView = nullptr;
 	}
 	ImGui_ImplDX11_Shutdown();
-	graphics::instance()->hook(reinitialize, nullptr, options::present);
+	graphics::instance()->attach(reinitialize, nullptr, options::present);
 	return resize(This, BufferCount, Width, Height, NewFormat, SwapChainFlags);
 }
 
@@ -128,7 +126,7 @@ HRESULT reinitialize(IDXGISwapChain* This, UINT SyncInterval, UINT Flags) {
 	pBackBuffer->Release();
 
 	ImGui_ImplDX11_Init(g_pd3dDevice, g_pd3dDeviceContext);
-	graphics::instance()->hook(handler, nullptr, options::present);
+	graphics::instance()->attach(handler, nullptr, options::present);
 	return present(This, SyncInterval, Flags);
 }
 
@@ -169,7 +167,7 @@ bool entry(HMODULE hmodule)
 	}
 
 	loggers::initialize();
-	graphic->hook(initialize, &present, options::present);
-	graphic->hook(change, &resize, options::resize);
+	graphic->attach(initialize, &present, options::present);
+	graphic->attach(change, &resize, options::resize);
 	return true;
 }

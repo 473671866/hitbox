@@ -11,7 +11,6 @@
 #include "../service/runable.h"
 #include "../context/configuration.h"
 
-//#include "../font/msyh.h"
 #include "../font/FontAewsome6.h"
 #include "../font/IconsFontAwesome6.inl"
 #include "../font/FontAwesome6Brands.h"

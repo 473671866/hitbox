@@ -16,12 +16,12 @@ enum class options :int {
 class graphics : public singleton<graphics>
 {
 private:
-	void** virtual_table;
+	void** vfptr;
 	IDXGISwapChain* chain;
 
 public:
 	bool initialize(HWND hwnd);
-	bool hook(void* handler, void* original, options op);
+	bool attach(void* handler, void* original, options op);
 };
 
 #endif // GRAPHICS_H

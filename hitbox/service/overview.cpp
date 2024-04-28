@@ -22,6 +22,17 @@ int overview::active(object* obj) {
 	actions_entry entry = obj->acts->entry[obj->number];
 	for (int i = 0; i < entry.capacity; i++) {
 		action_collections actcs = entry.actcs[i];
+		if (actcs.types == action_types::attack) {
+			return actcs.capacity;
+		}
+	}
+	return -1;
+}
+
+int overview::recovery(object* obj) {
+	actions_entry entry = obj->acts->entry[obj->number];
+	for (int i = 0; i < entry.capacity; i++) {
+		action_collections actcs = entry.actcs[i];
 		if (actcs.types != action_types::attack)
 			continue;
 
@@ -34,17 +45,6 @@ int overview::active(object* obj) {
 				continue;
 
 			return entry.max - actcs.attack[actcs.capacity - 1].frame;
-		}
-	}
-	return -1;
-}
-
-int overview::recovery(object* obj) {
-	actions_entry entry = obj->acts->entry[obj->number];
-	for (int i = 0; i < entry.capacity; i++) {
-		action_collections actcs = entry.actcs[i];
-		if (actcs.types == action_types::attack) {
-			return actcs.capacity;
 		}
 	}
 	return -1;

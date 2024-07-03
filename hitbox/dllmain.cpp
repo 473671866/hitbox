@@ -30,26 +30,24 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 	LPVOID lpReserved
 )
 {
-	switch (ul_reason_for_call)
-	{
-	case DLL_PROCESS_ATTACH: {
-		try {
-			std::thread(entry, hModule).detach();
-		}
-		catch (std::exception& e) {
-			MessageBoxA(NULL, e.what(), "warning", MB_OK);
-			TerminateProcess(GetCurrentProcess(), 0);
-		}
-		//auto header = reinterpret_cast<unsigned long long>(hModule);
-		//auto dos_header = reinterpret_cast<IMAGE_DOS_HEADER*>(header);
-		//auto nt_header = reinterpret_cast<IMAGE_NT_HEADERS*>(header + dos_header->e_lfanew);
-		//RtlInstallFunctionTableCallback(header | 3, header, nt_header->OptionalHeader.SizeOfImage, rebuild_exception, hModule, NULL);
-		break;
-	}
+	switch (ul_reason_for_call) {
 	case DLL_THREAD_ATTACH:
 	case DLL_THREAD_DETACH:
 	case DLL_PROCESS_DETACH:
-		break;
+		return true;
 	}
+
+	try {
+		std::thread(entry, hModule).detach();
+	}
+	catch (std::exception& e) {
+		MessageBoxA(NULL, e.what(), "warning", MB_OK);
+		TerminateProcess(GetCurrentProcess(), 0);
+	}
+
+	//auto header = reinterpret_cast<unsigned long long>(hModule);
+	//auto dos_header = reinterpret_cast<IMAGE_DOS_HEADER*>(header);
+	//auto nt_header = reinterpret_cast<IMAGE_NT_HEADERS*>(header + dos_header->e_lfanew);
+	//RtlInstallFunctionTableCallback(header | 3, header, nt_header->OptionalHeader.SizeOfImage, rebuild_exception, hModule, NULL);
 	return TRUE;
 }

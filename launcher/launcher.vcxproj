@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+    <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -115,8 +115,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>debug.cmd</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -136,16 +135,17 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>release.cmd</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="hitbox.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="utils\loader.cpp" />
     <ClCompile Include="utils\process.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="hitbox.h" />
     <ClInclude Include="utils\loader.h" />
     <ClInclude Include="utils\MemLoadDll.h" />
     <ClInclude Include="utils\process.h" />

@@ -62,6 +62,6 @@ int main(int arg, char** argv) {
 		}
 	}
 	ofs << "\r\n};";
-	std::cout << "build " << file_path.filename().string() << " success\n";
+	std::cout << "build " << header.filename().string() << " and " << source.filename().string() << " success\n";
 	return 0;
 }

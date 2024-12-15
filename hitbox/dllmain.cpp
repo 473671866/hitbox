@@ -2,6 +2,10 @@
 #include <thread>
 #include "entry/entry.h"
 
+#ifndef _WIN64
+#error errors requires x64 environment
+#endif
+
 PRUNTIME_FUNCTION rebuild_exception(
 	_In_ DWORD64 ControlPc,
 	_In_opt_ PVOID Context
@@ -45,9 +49,9 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 		TerminateProcess(GetCurrentProcess(), 0);
 	}
 
-	//auto header = reinterpret_cast<unsigned long long>(hModule);
-	//auto dos_header = reinterpret_cast<IMAGE_DOS_HEADER*>(header);
-	//auto nt_header = reinterpret_cast<IMAGE_NT_HEADERS*>(header + dos_header->e_lfanew);
-	//RtlInstallFunctionTableCallback(header | 3, header, nt_header->OptionalHeader.SizeOfImage, rebuild_exception, hModule, NULL);
+	auto header = reinterpret_cast<unsigned long long>(hModule);
+	auto dos_header = reinterpret_cast<IMAGE_DOS_HEADER*>(header);
+	auto nt_header = reinterpret_cast<IMAGE_NT_HEADERS*>(header + dos_header->e_lfanew);
+	RtlInstallFunctionTableCallback(header | 3, header, nt_header->OptionalHeader.SizeOfImage, rebuild_exception, hModule, NULL);
 	return TRUE;
 }

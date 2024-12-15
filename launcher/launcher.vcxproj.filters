@@ -8,6 +8,7 @@
     <ClCompile Include="utils\process.cpp">
       <Filter>utils</Filter>
     </ClCompile>
+    <ClCompile Include="hitbox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="utils">
@@ -27,5 +28,6 @@
     <ClInclude Include="utils\singletion.hpp">
       <Filter>utils</Filter>
     </ClInclude>
+    <ClInclude Include="hitbox.h" />
   </ItemGroup>
 </Project>

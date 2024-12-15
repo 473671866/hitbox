@@ -79,7 +79,7 @@ Virtual Studio 2022
 
 软件本身有注入行为，所以为被会各家杀软件拦截
 
-![image3](.\image3.png)
+![image3](./image3.png)
 
 
 

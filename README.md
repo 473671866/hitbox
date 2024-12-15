@@ -8,7 +8,9 @@
 
 ### 使用
 
-自行编译
+1. 在release页中下载launcher.exe[发布 版本 5.1 ·473671866/命中箱 (github.com)](https://github.com/473671866/hitbox/releases/tag/release-5.1)
+2. 启动游戏
+3. 启动launcher.exe
 
 ***
 
